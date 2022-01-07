@@ -9,7 +9,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SettingsIcon from "@mui/icons-material/Settings";
 import KeyboardHideIcon from "@mui/icons-material/KeyboardHide";
 import InboxIcon from "@mui/icons-material/Inbox";
-import Section from "./Section";
+import Section from "../UI/Section";
 import PeopleIcon from "@mui/icons-material/People";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import EmailRow from "./EmailRow";
@@ -55,14 +55,63 @@ function EmailList() {
           title="Raju"
           subject="hey"
           description="this is a test"
-          time="10pm"
+          time="Jan 4"
         />
         <EmailRow
           id="2"
           title="Raju"
           subject="hey"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
-          time="10pm"
+          time="Jan 4"
+        />{" "}
+        <EmailRow
+          id="1"
+          title="Raju"
+          subject="hey"
+          description="this is a test"
+          time="Jan 4"
+        />
+        <EmailRow
+          id="2"
+          title="Raju"
+          subject="hey"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
+          time="Jan 4"
+        />{" "}
+        <EmailRow
+          id="1"
+          title="Raju"
+          subject="hey"
+          description="this is a test"
+          time="Jan 4"
+        />
+        <EmailRow
+          id="2"
+          title="Raju"
+          subject="hey"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
+          time="Jan 4"
+        />{" "}
+        <EmailRow
+          id="1"
+          title="Raju"
+          subject="hey"
+          description="this is a test"
+          time="Jan 4"
+        />
+        <EmailRow
+          id="2"
+          title="Raju"
+          subject="hey"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
+          time="Jan 4"
+        />{" "}
+        <EmailRow
+          id="1"
+          title="Raju"
+          subject="hey"
+          description="this is a test"
+          time="Jan 4"
         />
       </div>
     </div>

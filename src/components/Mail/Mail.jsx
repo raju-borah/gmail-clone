@@ -1,6 +1,6 @@
 import React from "react";
 import "./Mail.css";
-import { IconButton } from "@mui/material";
+import { Avatar, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
@@ -15,7 +15,10 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import PrintIcon from "@mui/icons-material/Print";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import ReplyIcon from "@mui/icons-material/Reply";
 import { useHistory } from "react-router-dom";
+import { FiCornerUpLeft, FiCornerUpRight } from "react-icons/fi";
 function Mail() {
   const history = useHistory();
   return (
@@ -66,7 +69,7 @@ function Mail() {
         </div>
       </div>
       <div className="mail__subject">
-        <h4>Welcome to join CocoSign</h4>
+        <h1>Welcome to join CocoSign</h1>
         <div>
           <IconButton>
             <PrintIcon />
@@ -76,9 +79,41 @@ function Mail() {
           </IconButton>
         </div>
       </div>
-      <div className="mail__body">
-        
+      <div className="mail__detail">
+        <div class="avatar__email">
+          <Avatar />
+          <span>
+            email@gmail.com <br />
+            to
+          </span>
+        </div>
+        <div className="mail__date">
+          Nov 16, 2021, 11:39 AM
+          <IconButton>
+            <StarBorderIcon />
+          </IconButton>
+          <IconButton>
+            <ReplyIcon />
+          </IconButton>
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        </div>
       </div>
+      <div className="mail__body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+        praesentium culpa excepturi est eum adipisci, aperiam necessitatibus
+        iure temporibus, ratione ipsum esse asperiores ab repellendus, inventore
+        ducimus ullam nulla quae!
+      </div>
+      <Button variant="outlined" className="btn">
+        <FiCornerUpLeft />
+        Reply
+      </Button>
+      <Button variant="outlined" className="btn">
+        <FiCornerUpRight />
+        Forward
+      </Button>
     </div>
   );
 }

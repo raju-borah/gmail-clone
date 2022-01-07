@@ -1,11 +1,15 @@
 import React from "react";
 import "./App.css";
-import { Header } from "./Header";
-import Sidebar from "./Sidebar";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Mail from "./Mail";
-import EmailList from "./EmailList";
+import Header from "./components/Header/Header";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Sidebar from "./components/SideBar/Sidebar";
+import Mail from "./components/Mail/Mail";
+import EmailList from "./components/Mail/EmailList";
+import SendMail from "./components/Mail/SendMail";
+import { selectSendMessageIsOpen } from "./features/mailSlice";
+import { useSelector } from "react-redux";
 function App() {
+  const showSendMessageModal = useSelector(selectSendMessageIsOpen);
   return (
     <Router>
       <div className="App">
@@ -21,6 +25,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+        {showSendMessageModal && <SendMail />}
       </div>
     </Router>
   );

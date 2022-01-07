@@ -1,10 +1,11 @@
 .emailRow {
   display: flex;
   align-items: center;
-  height: 30 !important;
+  height: 30px !important;
   border-bottom: 1px solid whitesmoke;
   cursor: pointer;
   z-index: 999;
+  padding: 12px;
   font-weight: normal !important;
 }
 .emailRow__options {
@@ -32,5 +33,5 @@
   padding-right: 5px;
 }
 .emailRow__time {
-  font-weight: bold;
+  font-weight: 400;
 }

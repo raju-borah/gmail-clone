@@ -1,5 +1,7 @@
 .emailList {
   flex: 1;
+  height: 100%;
+  overflow-y: scroll;
 }
 .emailList__settings {
   display: flex;
@@ -7,18 +9,16 @@
   position: sticky;
   top: 0;
   border-bottom: 1px solid whitesmoke;
-  background-color: white;
-  padding-right: 10px;
+  background-color: white !important;
+  padding-right: 10px !important;
+  z-index: 1000;
 }
 .emailList__section {
-  position: sticky;
-  top: 0;
   display: flex;
   border-bottom: 1px solid whitesmoke;
   background-color: white;
 }
 .emailList__list {
-    
 }
 .emailList__settingLeft {
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { IconButton, Avatar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import logo from "./assets/logo.jpg";
+import logo from "../../assets/logo.jpg";
 import SearchIcon from "@mui/icons-material/Search";
 import AppsIcon from "@mui/icons-material/Apps";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -9,7 +9,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HelpIcon from "@mui/icons-material/Help";
 import "./Header.css";
-export const Header = () => {
+const Header = () => {
   return (
     <div className="header">
       <div className="header__left">
@@ -41,3 +41,4 @@ export const Header = () => {
     </div>
   );
 };
+export default Header;
