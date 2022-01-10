@@ -1,3 +1,8 @@
+@media (min-width: 900px) {
+  .emailRow__message .emailRow__time {
+    display: none !important;
+  }
+}
 .emailRow {
   display: flex;
   align-items: center;

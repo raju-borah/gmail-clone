@@ -8,10 +8,13 @@ import EmailList from "./components/Mail/EmailList";
 import SendMail from "./components/Mail/SendMail";
 import { selectSendMessageIsOpen } from "./features/mailSlice";
 import { useSelector } from "react-redux";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 function App() {
   const showSendMessageModal = useSelector(selectSendMessageIsOpen);
   return (
     <Router>
+      <ReactNotification />
       <div className="App">
         <Header />
         <div className="app__body">
@@ -22,6 +25,12 @@ function App() {
             </Route>
             <Route path="/">
               <EmailList />
+            </Route>
+            <Route path="/social">
+              <h1>social</h1>
+            </Route>
+            <Route path="/promotions">
+              <h1>promotion</h1>
             </Route>
           </Switch>
         </div>

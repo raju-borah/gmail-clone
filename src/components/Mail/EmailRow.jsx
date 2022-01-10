@@ -7,7 +7,18 @@ import LabelImportantOutlinedIcon from "@mui/icons-material/LabelImportantOutlin
 function EmailRow({ id, title, subject, description, time }) {
   const history = useHistory();
   return (
-    <div onClick={() => history.push("/mail")} className="emailRow">
+    <div
+      onClick={() =>
+        history.push("/mail", {
+          id: id,
+          title: title,
+          subject: subject,
+          desc: description,
+          date: time,
+        })
+      }
+      className="emailRow"
+    >
       <div className="emailRow__options">
         <Checkbox />
         <IconButton>

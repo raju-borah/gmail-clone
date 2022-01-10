@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./EmailList.css";
 import { Checkbox, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -13,7 +13,28 @@ import Section from "../UI/Section";
 import PeopleIcon from "@mui/icons-material/People";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import EmailRow from "./EmailRow";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
+import { query, orderBy, limit } from "firebase/firestore";
+
 function EmailList() {
+  const [lists, setlists] = useState([]);
+  const [loading, setloading] = useState(true);
+  const getData = async () => {
+    const q = query(collection(db, "emails"), orderBy("timestamp", "asc"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      if (doc.data()) {
+        setlists((prev) => {
+          return [doc.data(), ...prev];
+        });
+      }
+    });
+    setloading(false);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="emailList">
       <div className="emailList__settings">
@@ -50,69 +71,28 @@ function EmailList() {
         <Section Icon={LocalOfferIcon} title="Prommotions" color="black" />
       </div>
       <div className="emailList__list">
-        <EmailRow
-          id="1"
-          title="Raju"
-          subject="hey"
-          description="this is a test"
-          time="Jan 4"
-        />
-        <EmailRow
-          id="2"
-          title="Raju"
-          subject="hey"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
-          time="Jan 4"
-        />{" "}
-        <EmailRow
-          id="1"
-          title="Raju"
-          subject="hey"
-          description="this is a test"
-          time="Jan 4"
-        />
-        <EmailRow
-          id="2"
-          title="Raju"
-          subject="hey"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
-          time="Jan 4"
-        />{" "}
-        <EmailRow
-          id="1"
-          title="Raju"
-          subject="hey"
-          description="this is a test"
-          time="Jan 4"
-        />
-        <EmailRow
-          id="2"
-          title="Raju"
-          subject="hey"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
-          time="Jan 4"
-        />{" "}
-        <EmailRow
-          id="1"
-          title="Raju"
-          subject="hey"
-          description="this is a test"
-          time="Jan 4"
-        />
-        <EmailRow
-          id="2"
-          title="Raju"
-          subject="hey"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi iste molestiae maiores doloremque dolores explicabo numquam perspiciatis possimus repellat."
-          time="Jan 4"
-        />{" "}
-        <EmailRow
-          id="1"
-          title="Raju"
-          subject="hey"
-          description="this is a test"
-          time="Jan 4"
-        />
+        {loading == true
+          ? "loading..."
+          : lists.map((currentElement, index) => {
+              return (
+                <EmailRow
+                  id={index++}
+                  key={index++}
+                  title={currentElement.to}
+                  subject={currentElement.subject}
+                  description={currentElement.message}
+                  time={new Date(
+                    currentElement.timestamp.seconds * 1000
+                  ).toLocaleDateString("en-US", {
+                    weekday: "short",
+                    year: "2-digit",
+                    month: "short",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                />
+              );
+            })}
       </div>
     </div>
   );

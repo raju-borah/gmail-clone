@@ -11,7 +11,7 @@ import { closeSendMessage } from "../../features/mailSlice";
 import { useForm } from "react-hook-form";
 import { db } from "../../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-
+import { store } from "react-notifications-component";
 function SendMail() {
   const dispatch = useDispatch();
   const {
@@ -32,6 +32,19 @@ function SendMail() {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+    store.addNotification({
+      message: "Message send successfully",
+      type: "success",
+      insert: "bottom",
+      container: "bottom-left",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true,
+      },
+    });
+    dispatch(closeSendMessage());
   };
   return (
     <div className="sendMail">

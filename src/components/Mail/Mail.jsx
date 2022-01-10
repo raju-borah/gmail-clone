@@ -19,8 +19,12 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ReplyIcon from "@mui/icons-material/Reply";
 import { useHistory } from "react-router-dom";
 import { FiCornerUpLeft, FiCornerUpRight } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
 function Mail() {
   const history = useHistory();
+  const location = useLocation();
+  const { to, title, subject, desc, date } = location.state;
+
   return (
     <div className="mail">
       <div className="mail__tools">
@@ -69,7 +73,7 @@ function Mail() {
         </div>
       </div>
       <div className="mail__subject">
-        <h1>Welcome to join CocoSign</h1>
+        <h1>{subject}</h1>
         <div>
           <IconButton>
             <PrintIcon />
@@ -79,16 +83,17 @@ function Mail() {
           </IconButton>
         </div>
       </div>
+
       <div className="mail__detail">
-        <div class="avatar__email">
+        <div className="avatar__email">
           <Avatar />
           <span>
-            email@gmail.com <br />
+            {title} <br />
             to
           </span>
         </div>
         <div className="mail__date">
-          Nov 16, 2021, 11:39 AM
+          {date}
           <IconButton>
             <StarBorderIcon />
           </IconButton>
@@ -100,12 +105,7 @@ function Mail() {
           </IconButton>
         </div>
       </div>
-      <div className="mail__body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-        praesentium culpa excepturi est eum adipisci, aperiam necessitatibus
-        iure temporibus, ratione ipsum esse asperiores ab repellendus, inventore
-        ducimus ullam nulla quae!
-      </div>
+      <div className="mail__body">{desc}</div>
       <Button variant="outlined" className="btn">
         <FiCornerUpLeft />
         Reply
