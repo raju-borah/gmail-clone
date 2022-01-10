@@ -17,6 +17,9 @@
 }
 .emailRow__title {
   padding: 0 15px;
+  width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-weight: normal !important;
 }
 .emailRow:hover {
