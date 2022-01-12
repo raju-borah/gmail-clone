@@ -9,6 +9,7 @@
   z-index: 999;
   background-color: white;
   overflow: hidden;
+  padding-left: 10px;
 }
 .header__left {
   display: flex;
@@ -27,6 +28,7 @@
   width: 40%;
   background-color: whitesmoke;
   border-radius: 10px;
+  /* box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.253); */
 }
 .header__mid > input {
   border: none;

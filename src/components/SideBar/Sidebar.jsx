@@ -16,6 +16,50 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { useDispatch } from "react-redux";
 import { openSendMessage } from "../../features/mailSlice";
 function Sidebar() {
+  const sideBarOptions = [
+    {
+      icon: InboxIcon,
+      title: "Inbox",
+      number: "",
+      isActive: true,
+    },
+    {
+      icon: StarIcon,
+      title: "Starred",
+      number: "",
+      isActive: false,
+    },
+    {
+      icon: AccessTimeIcon,
+      title: "Snoozed",
+      number: "",
+      isActive: false,
+    },
+    {
+      icon: LabelImportantIcon,
+      title: "Important",
+      number: "",
+      isActive: false,
+    },
+    {
+      icon: NearMeIcon,
+      title: "Sent",
+      number: "",
+      isActive: false,
+    },
+    {
+      icon: NoteIcon,
+      title: "Draft",
+      number: "",
+      isActive: false,
+    },
+    {
+      icon: ExpandMoreIcon,
+      title: "More",
+      number: "",
+      isActive: false,
+    },
+  ];
   const dispatch = useDispatch();
   return (
     <div className="sidebar">
@@ -26,19 +70,17 @@ function Sidebar() {
       >
         Compose
       </Button>
-      <SidebarOption
-        Icon={InboxIcon}
-        title="Inbox"
-        number={54}
-        selected={true}
-      />
-      <SidebarOption Icon={StarIcon} title="Starred" number={1} />
-      <SidebarOption Icon={AccessTimeIcon} title="Snoozed" number={1} />
-      <SidebarOption Icon={LabelImportantIcon} title="Important" number={1} />
-      <SidebarOption Icon={NearMeIcon} title="Sent" number={1} />
-      <SidebarOption Icon={NoteIcon} title="Drafts" number={1} />
-      <SidebarOption Icon={ExpandMoreIcon} title="More" number={1} />
-
+      {sideBarOptions.map((element, index) => {
+        return (
+          <SidebarOption
+            key={index}
+            Icon={element.icon}
+            title={element.title}
+            number={element.number}
+            selected={element.isActive}
+          />
+        );
+      })}
       <div className="sidebar__footer">
         <div className="sidebar__footerIcons">
           <IconButton>

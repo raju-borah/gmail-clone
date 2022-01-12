@@ -20,10 +20,11 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import { useHistory } from "react-router-dom";
 import { FiCornerUpLeft, FiCornerUpRight } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 function Mail() {
   const history = useHistory();
   const location = useLocation();
-  const { to, title, subject, desc, date } = location.state;
+  const { mailTo, subject, desc, date } = location.state;
 
   return (
     <div className="mail">
@@ -88,8 +89,11 @@ function Mail() {
         <div className="avatar__email">
           <Avatar />
           <span>
-            {title} <br />
-            to
+            {mailTo} <br />
+            to me
+            <IconButton className="iconButton">
+              <ArrowDropDownIcon />
+            </IconButton>
           </span>
         </div>
         <div className="mail__date">

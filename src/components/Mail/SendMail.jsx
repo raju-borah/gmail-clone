@@ -12,6 +12,8 @@ import { useForm } from "react-hook-form";
 import { db } from "../../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { store } from "react-notifications-component";
+import EditorJS from "@editorjs/editorjs";
+
 function SendMail() {
   const dispatch = useDispatch();
   const {
@@ -40,12 +42,14 @@ function SendMail() {
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
-        duration: 5000,
+        duration: 2000,
         onScreen: true,
       },
     });
     dispatch(closeSendMessage());
   };
+
+  const editor = new EditorJS();
   return (
     <div className="sendMail">
       <div className="sendMail__header">
@@ -68,7 +72,7 @@ function SendMail() {
           name="to"
           fullWidth
           className="sendMail__inputs"
-          type="email"
+          type="text"
           {...register("to", { required: true })}
         />
         {errors.to?.type === "required" && (

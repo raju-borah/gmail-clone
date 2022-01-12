@@ -9,13 +9,13 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SettingsIcon from "@mui/icons-material/Settings";
 import KeyboardHideIcon from "@mui/icons-material/KeyboardHide";
 import InboxIcon from "@mui/icons-material/Inbox";
-import Section from "../UI/Section";
+import Section from "../Section/Section";
 import PeopleIcon from "@mui/icons-material/People";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import EmailRow from "./EmailRow";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { query, orderBy, limit } from "firebase/firestore";
+import { query, orderBy } from "firebase/firestore";
 
 function EmailList() {
   const [lists, setlists] = useState([]);
@@ -66,29 +66,29 @@ function EmailList() {
         </div>
       </div>
       <div className="emailList__section">
-        <Section Icon={InboxIcon} title="Primary" color="red" selected />
+        <Section Icon={InboxIcon} title="Primary" color="red" selected="true" />
         <Section Icon={PeopleIcon} title="Social" color="blue" />
         <Section Icon={LocalOfferIcon} title="Prommotions" color="black" />
       </div>
       <div className="emailList__list">
-        {loading == true
+        {loading === true
           ? "loading..."
           : lists.map((currentElement, index) => {
               return (
                 <EmailRow
                   id={index++}
                   key={index++}
-                  title={currentElement.to}
+                  mailTo={currentElement.to}
                   subject={currentElement.subject}
                   description={currentElement.message}
                   time={new Date(
                     currentElement.timestamp.seconds * 1000
                   ).toLocaleDateString("en-US", {
-                    weekday: "short",
+                    // weekday: "short",
                     year: "2-digit",
                     month: "short",
-                    hour: "2-digit",
-                    minute: "2-digit",
+                    // hour: "2-digit",
+                    // minute: "2-digit",
                   })}
                 />
               );

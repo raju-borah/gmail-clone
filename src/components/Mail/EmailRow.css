@@ -1,6 +1,11 @@
-@media (min-width: 900px) {
-  .emailRow__message .emailRow__time {
+@media (max-width: 945px) {
+  .emailRow__time,
+  .email__option--imp {
     display: none !important;
+  }
+  .emailRow__title,
+  .emailRow__message {
+    display: block;
   }
 }
 .emailRow {
@@ -17,10 +22,10 @@
 }
 .emailRow__title {
   padding: 0 15px;
-  width: 20%;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: normal !important;
+  flex: 0.1;
 }
 .emailRow:hover {
   border-top: 1px solid whitesmoke;
