@@ -41,6 +41,7 @@
 .sendMail__inputs--message {
   outline: none !important;
   width: 100% !important;
+  height: 300px !important;
   padding-top: 5px !important;
   border: none !important;
 }

@@ -21,11 +21,15 @@ import { useHistory } from "react-router-dom";
 import { FiCornerUpLeft, FiCornerUpRight } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 function Mail() {
   const history = useHistory();
   const location = useLocation();
   const { mailTo, subject, desc, date } = location.state;
-
+  const modules = {
+    toolbar: false,
+  };
   return (
     <div className="mail">
       <div className="mail__tools">
@@ -109,7 +113,16 @@ function Mail() {
           </IconButton>
         </div>
       </div>
-      <div className="mail__body">{desc}</div>
+      <div className="mail__body">
+        <ReactQuill
+          theme="snow"
+          readOnly
+          modules={modules}
+          name="message"
+          value={desc}
+          className="sendMail__inputs--message"
+        />
+      </div>
       <Button variant="outlined" className="btn">
         <FiCornerUpLeft />
         Reply

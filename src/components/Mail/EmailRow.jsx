@@ -27,7 +27,8 @@ function EmailRow({ id, mailTo, subject, description, time }) {
       <h3 className="emailRow__title">{mailTo}</h3>
       <div className="emailRow__message">
         <h4>
-          {subject} <span className="emailRow__description">{description}</span>
+          {subject}
+          {/* <span className="emailRow__description">{description}</span> */}
         </h4>
       </div>
       <p className="emailRow__time">{time}</p>

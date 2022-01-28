@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SendMail.css";
 import MinimizeIcon from "@mui/icons-material/Minimize";
 import { CgArrowsExpandRight } from "react-icons/cg";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, TextareaAutosize } from "@mui/material";
+import { Button } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
 import { useDispatch } from "react-redux";
@@ -12,10 +12,11 @@ import { useForm } from "react-hook-form";
 import { db } from "../../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { store } from "react-notifications-component";
-import EditorJS from "@editorjs/editorjs";
-
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 function SendMail() {
   const dispatch = useDispatch();
+  const [message, setmessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -27,7 +28,7 @@ function SendMail() {
       const docRef = await addDoc(collection(db, "emails"), {
         to: data.to,
         subject: data.subject,
-        message: data.message,
+        message: message,
         timestamp: serverTimestamp(),
       });
       console.log("Document written with ID: ", docRef.id);
@@ -48,8 +49,9 @@ function SendMail() {
     });
     dispatch(closeSendMessage());
   };
-
-  const editor = new EditorJS();
+  const modules = {
+    toolbar: false,
+  };
   return (
     <div className="sendMail">
       <div className="sendMail__header">
@@ -89,14 +91,14 @@ function SendMail() {
         {errors.subject?.type === "required" && (
           <p className="error">Subject is required</p>
         )}
-
-        <TextareaAutosize
+        <ReactQuill
+          theme="snow"
+          modules={modules}
           name="message"
+          onChange={(e) => setmessage(e)}
           className="sendMail__inputs--message"
-          aria-label="minimum height"
-          minRows={10}
-          {...register("message", { required: true })}
         />
+
         {errors.message?.type === "required" && (
           <p className="error">Message is required</p>
         )}
